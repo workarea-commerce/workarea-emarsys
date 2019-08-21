@@ -1,0 +1,8 @@
+module Workarea
+  decorate Order, with: :emarsys do
+    decorated do
+      scope :emarsys_exportable,
+        -> { where :placed_at.gte => Emarsys.config.export_interval.ago }
+    end
+  end
+end

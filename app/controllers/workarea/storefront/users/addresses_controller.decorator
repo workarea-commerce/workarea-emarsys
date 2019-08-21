@@ -1,0 +1,13 @@
+module Workarea
+  decorate Storefront::Users::AddressesController, with: :emarsys do
+    decorated do
+      after_action :save_emarsys_contact, only: [:create, :update]
+    end
+
+    private
+
+      def save_emarsys_contact
+        Emarsys::SaveUser.perform_async(current_user.id)
+      end
+  end
+end

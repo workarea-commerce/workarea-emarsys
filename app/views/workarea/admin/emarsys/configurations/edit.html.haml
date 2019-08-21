@@ -1,0 +1,68 @@
+- @page_title = t('workarea.admin.emarsys_configuration.edit.title')
+
+.view
+  .view__header
+    .view__heading
+      = link_to "↑ #{t('workarea.admin.search_settings.show.dashboard_link')}", settings_dashboards_path
+      %h1= t('workarea.admin.emarsys_configuration.edit.title')
+
+  .view__container
+    = form_tag emarsys_configuration_path, method: :patch, data: { unsaved_changes: '' } do
+
+      .grid__cell.grid__cell--50-at-medium
+
+        .property
+          %span.property__name
+            = t('workarea.admin.emarsys_configuration.edit.api_key')
+            = link_to '#api-key', data: { tooltip: '' } do
+              = inline_svg('workarea/admin/icons/help.svg', class: 'svg-icon svg-icon--small svg-icon--blue', title: t('workarea.admin.emarsys_configuration.edit.api_key'))
+            #api-key.tooltip-content
+              %p= t('workarea.admin.emarsys_configuration.edit.help.api_key')
+
+          - if @configuration.masked_api_key.present?
+            %p= @configuration.masked_api_key
+          - else
+            %p= t('workarea.admin.emarsys_configuration.edit.no_key')
+
+          %span.property__name
+            = t('workarea.admin.emarsys_configuration.edit.sales_api_key')
+            = link_to '#sales-api-key', data: { tooltip: '' } do
+              = inline_svg('workarea/admin/icons/help.svg', class: 'svg-icon svg-icon--small svg-icon--blue', title: t('workarea.admin.emarsys_configuration.edit.sales_api_key'))
+            #sales-api-key.tooltip-content
+              %p= t('workarea.admin.emarsys_configuration.edit.help.sales_api_key')
+
+          - if @configuration.masked_sales_api_key.present?
+            %p= @configuration.masked_sales_api_key
+          - else
+            %p= t('workarea.admin.emarsys_configuration.edit.no_key')
+
+          %span.property__name
+            = t('workarea.admin.emarsys_configuration.edit.production')
+            = link_to '#enabled', data: { tooltip: '' } do
+              = inline_svg('workarea/admin/icons/help.svg', class: 'svg-icon svg-icon--small svg-icon--blue', title: t('workarea.admin.emarsys_configuration.edit.production'))
+            #enabled.tooltip-content
+              %p= t('workarea.admin.emarsys_configuration.edit.help.production')
+
+          = toggle_button_for 'production', @configuration.production?
+
+          %span.property__name
+            = t('workarea.admin.emarsys_configuration.edit.customer_id')
+            = link_to '#show-on-pdp', data: { tooltip: '' } do
+              = inline_svg('workarea/admin/icons/help.svg', class: 'svg-icon svg-icon--small svg-icon--blue', title: t('workarea.admin.emarsys_configuration.edit.customer_id'))
+            #show-on-pdp.tooltip-content
+              %p= t('workarea.admin.emarsys_configuration.edit.help.customer_id')
+
+          = text_field_tag 'customer_id', @configuration.customer_id, class: 'text-box', id: "customer_id"
+
+          %span.property__name
+            = t('workarea.admin.emarsys_configuration.edit.merchant_id')
+            = link_to '#show-on-cart', data: { tooltip: '' } do
+              = inline_svg('workarea/admin/icons/help.svg', class: 'svg-icon svg-icon--small svg-icon--blue', title: t('workarea.admin.emarsys_configuration.edit.merchant_id'))
+            #show-on-cart.tooltip-content
+              %p= t('workarea.admin.emarsys_configuration.edit.help.merchant_id')
+
+          = text_field_tag 'merchant_id', @configuration.merchant_id, class: 'text-box', id: "merchant_id"
+
+      .workflow-bar
+        .grid.grid--auto.grid--right.grid--middle
+          .grid__cell= button_tag t('workarea.admin.emarsys_configuration.edit.button'), value: 'save_settings', class: 'workflow-bar__button workflow-bar__button--update'

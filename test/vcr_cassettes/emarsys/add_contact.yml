@@ -1,0 +1,67 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://api-proxy.s.emarsys.com/api/v2/internal/215861890/contact/?create_if_not_exists=1
+    body:
+      encoding: UTF-8
+      string: '{"contacts":[{"3":"jyucis-emarsys@workarea.com"}]}'
+    headers:
+      User-Agent:
+      - Faraday v0.15.4
+      Content-Type:
+      - application/json
+      X-Ems-Date:
+      - 20190313T181243Z
+      X-Ems-Auth:
+      - EMS-HMAC-SHA256 Credential=suite_workarea_v1/20190313/eu/suite/ems_request,
+        SignedHeaders=host;x-ems-date, Signature=a
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - max-age=0, no-cache, no-store, must-revalidate
+      Content-Length:
+      - '74'
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 13 Mar 2019 18:12:48 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - openresty/1.11.2.1
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains; preload
+      Vary:
+      - Accept-Encoding
+      Via:
+      - kong/0.14.1
+      X-Emarsys-Request-Id:
+      - 5fa693f7-8fe3-4b50-a766-7488acf6c08d#17813
+      X-Fe:
+      - suitesapipxy01.emarsys.at
+      X-Kong-Proxy-Latency:
+      - '18'
+      X-Kong-Upstream-Latency:
+      - '737'
+      X-Ratelimit-Limit:
+      - '200'
+      X-Ratelimit-Remaining:
+      - '199'
+      X-Ratelimit-Reset:
+      - '1552500780'
+      X-Suite-Response-Time:
+      - '697'
+    body:
+      encoding: ASCII-8BIT
+      string: '{"replyCode":0,"replyText":"OK","data":{"ids":[500767919]}}'
+    http_version:
+  recorded_at: Wed, 13 Mar 2019 18:12:48 GMT
+recorded_with: VCR 2.9.3

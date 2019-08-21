@@ -1,0 +1,8 @@
+module Workarea
+  decorate Email::Signup, with: :emarsys do
+    decorated do
+      field :emarsys_exported_at, type: Time
+      field :emarsys_external_id, type: String
+    end
+  end
+end

@@ -1,0 +1,28 @@
+---
+en:
+  workarea:
+    admin:
+      shared:
+        primary_nav:
+          emarsys_configuration_title: Emarsys Configuration
+      emarsys_configuration:
+        edit:
+          flash_messages:
+            updated: Emarsys configuration has been updated
+            save_error: There was a problem updating the configuration
+          title: Emarsys Configuration
+          button: Save Emarsys Configuration
+          production: Use Production API?
+          customer_id: Customer ID
+          merchant_id: Merchant ID
+          api_key: API Key
+          sales_api_key: Sales Data API Key
+          no_key: No API key configured. Contact your developer to add this secure value. Customers will not be sent until this value is set.
+          no_sales_key: No Sales API key configured. Contact your developer to add this secure value. Order files will not be sent until this value is set.
+          help:
+            api_key: API Key for customer synchronization. Can be found in the Emarsys adminstration system.
+            sales_api_key: API Key for order file synchronization. Can be found in the Emarsys adminstration system.
+            production: Use the Live/Production API endpoints. Turn this on when ready to go live with your integration.
+            customer_id: Emarsys customer ID. Required for using API endpoints. Contact your Emarays Support team to get this value.
+            merchant_id: Emarsys merchant ID. This value is required for the Web Extend data integration.
+
