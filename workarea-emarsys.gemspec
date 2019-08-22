@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = Workarea::Emarsys::VERSION
   s.authors     = ["Jeff Yucis"]
   s.email       = ["jyucis@weblinc.com"]
-  s.homepage    = "https://homebase.weblinc.com"
+  s.homepage    = "https://github.com/workarea-commerce/workarea-emarsys"
   s.summary     = "Emarsys email service provider"
   s.description = "Workarea Integration with Emarsys"
 
