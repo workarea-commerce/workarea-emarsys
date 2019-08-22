@@ -34,15 +34,16 @@ desc "Release version #{Workarea::Emarsys::VERSION} of the gem"
 task :release do
   host = "https://#{ENV['BUNDLE_GEMS__WEBLINC__COM']}@gems.weblinc.com"
 
-  Rake::Task['workarea:changelog'].execute
-  system 'git add CHANGELOG.md'
-  system 'git commit -m "Update CHANGELOG"'
-  system 'git push origin HEAD'
+  #Rake::Task['workarea:changelog'].execute
+  #system 'git add CHANGELOG.md'
+  #system 'git commit -m "Update CHANGELOG"'
+  #system 'git push origin HEAD'
 
   system "git tag -a v#{Workarea::Emarsys::VERSION} -m 'Tagging #{Workarea::Emarsys::VERSION}'"
   system 'git push --tags'
 
   system "gem build workarea-emarsys.gemspec"
+  system "gem push workarea-emarsys-#{Workarea::Emarsys::VERSION}.gem"
   system "gem push workarea-emarsys-#{Workarea::Emarsys::VERSION}.gem --host #{host}"
   system "rm workarea-emarsys-#{Workarea::Emarsys::VERSION}.gem"
 end
