@@ -49,7 +49,6 @@ module Workarea
             Contact::Order.new(model)
           end
         end
-
     end
   end
 end

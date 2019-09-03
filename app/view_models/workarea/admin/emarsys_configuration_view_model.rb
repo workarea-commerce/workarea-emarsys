@@ -14,7 +14,6 @@ module Workarea
         last_digits = key.to_s.slice(-4..-1)
         "XXXXXXXXXX#{last_digits}"
       end
-
     end
   end
 end

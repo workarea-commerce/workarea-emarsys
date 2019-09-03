@@ -3,7 +3,6 @@ require 'test_helper'
 module Workarea
   module Storefront
     class EmarsysTrackingSystemTest < Workarea::SystemTest
-
       def test_emarsys_tracking_js
         settings = Workarea::Emarsys::Configuration.create!(merchant_id: 'abcdefg')
         visit storefront.root_path
@@ -19,7 +18,6 @@ module Workarea
         emarsys_script = find('script', text: 'abcdefg', visible: false) rescue nil
         refute(emarsys_script.present?)
       end
-
     end
   end
 end

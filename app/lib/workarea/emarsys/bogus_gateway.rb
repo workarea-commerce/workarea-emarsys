@@ -1,7 +1,6 @@
 module Workarea
   module Emarsys
     class BogusGateway
-
       attr_reader :options
 
       def initialize(options = {})
