@@ -62,7 +62,8 @@ module Workarea
             algo_prefix: 'EMS',
             vendor_key: 'EMS',
             auth_header_name: 'X-Ems-Auth',
-            date_header_name: 'X-Ems-Date'
+            date_header_name: 'X-Ems-Date',
+            current_time: Time.current
           }
         end
 

@@ -2,7 +2,6 @@ require 'test_helper'
 
 module Workarea
   class Emarsys::SaveUserTest < TestCase
-
     def test_save_user_sets_time_stamp
       Workarea::Emarsys::Configuration.create(customer_id: '1234')
       user = create_user

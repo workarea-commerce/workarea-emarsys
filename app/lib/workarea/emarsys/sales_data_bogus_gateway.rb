@@ -1,7 +1,6 @@
 module Workarea
   module Emarsys
     class SalesDataBogusGateway
-
       attr_reader :options
 
       def initialize(options = {})
@@ -23,7 +22,6 @@ module Workarea
           r = response.get('/rest/bogus.json')
           Response.new(r)
         end
-
     end
   end
 end
