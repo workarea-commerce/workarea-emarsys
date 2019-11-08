@@ -7,10 +7,6 @@ Workarea.configure do |config|
 
   config.emarsys.export_interval = 1.day
 
-  # Merchant ID used for web extend JS
-  # this is required for the web extend javascript
-  config.emarsys.merchant_id = nil
-
   config.emarsys.api_timeout = 3
   config.emarsys.open_timeout = 3
 end

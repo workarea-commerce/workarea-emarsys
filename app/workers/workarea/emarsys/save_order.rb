@@ -10,7 +10,7 @@ module Workarea
       )
 
       def perform(id)
-        return unless settings.customer_id.present?
+        return unless Emarsys.customer_id.present?
 
         order = Workarea::Order.find(id)
         address = Workarea::Payment.find(order.id).address
@@ -20,9 +20,6 @@ module Workarea
       end
 
       private
-        def settings
-          Workarea::Emarsys::Configuration.current
-        end
 
         def gateway
           Emarsys.gateway

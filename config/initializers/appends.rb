@@ -8,11 +8,6 @@ Workarea.append_partials(
   'workarea/storefront/emarsys/current_user_emarsys_cart'
 )
 
-Workarea.append_partials(
-  "admin.settings_menu",
-  "workarea/admin/shared/emarsys_configuration_link"
-)
-
 Workarea.append_javascripts(
   'storefront.modules',
   'workarea/storefront/emarsys/modules/web_extend_adapter'

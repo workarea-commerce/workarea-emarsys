@@ -10,6 +10,9 @@ This integration supports the following:
 3. Order syncronization
 4. Full Web-Extend Analytics integration
 
+The Workarea Emarsys integration is a Emarsys Add-on. Contact your Emarsys support person to
+have the Workarea Emarsys integration enabled for your account. 
+
 Getting Started
 --------------------------------------------------------------------------------
 
@@ -30,9 +33,7 @@ bundle
 
 Configuration
 --------------------------------------------------------------------------------
-An administration panel in the Worakrea Admin has been provided to set some configuration values. Users must have permissions to **settings** to access this feature.
-
-The follow is accessible via the configuration panel:
+The following fields can be edited via the admin site settings:
 
 1. **Production:** A toggle switch to set the integration into production mode, defaults to false.
 2. **Customer ID:** The customer ID of account. Ask your Emarsys account manager for this value.
