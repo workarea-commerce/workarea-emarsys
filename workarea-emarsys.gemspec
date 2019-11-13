@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   s.license = 'Business Software License'
 
-  s.add_dependency 'workarea', '~> 3.x'
+  s.add_dependency 'workarea', '>=  3.5.x'
   s.add_dependency 'workarea-google_product_feed', '~> 3.x'
   s.add_dependency "escher"
   s.add_dependency "faraday", "~> 0.10"

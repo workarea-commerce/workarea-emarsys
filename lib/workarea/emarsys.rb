@@ -27,7 +27,11 @@ module Workarea
     end
 
     def self.customer_id
-      credentials[:customer_id]
+      Workarea.config.customer_id
+    end
+
+    def self.merchant_id
+      Workarea.config.merchant_id
     end
 
     def self.config
@@ -40,8 +44,7 @@ module Workarea
     # @return [Emarsys::Gateway]
     def self.gateway
       if credentials.present?
-        settings = Workarea::Emarsys::Configuration.current
-        Emarsys::Gateway.new(secret_key, settings.customer_id, { test: !settings.production? })
+        Emarsys::Gateway.new(secret_key, Emarsys.customer_id, { test: !Workarea.config.emarsys_production_api })
       else
         Emarsys::BogusGateway.new
       end
@@ -49,8 +52,7 @@ module Workarea
 
     def self.sales_data_gateway
       if credentials.present?
-        settings = Workarea::Emarsys::Configuration.current
-        Emarsys::SalesDataGateway.new(api_token, { merchant_id: settings.merchant_id })
+        Emarsys::SalesDataGateway.new(api_token, { merchant_id: Emarsys.merchant_id })
       else
         Emarsys::SalesDataBogusGateway.new
       end
