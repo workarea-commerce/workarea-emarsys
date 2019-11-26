@@ -1,3 +1,16 @@
+Workarea Emarsys 1.1.0 (2019-11-26)
+--------------------------------------------------------------------------------
+
+*   Updates for v3.5 compatibility.
+
+    Removes the custom build configuration panel in favor
+    of the out-of-box admin settings available in 3.5.
+
+    EMARSYS-1
+    Jeff Yucis
+
+
+
 Workarea Emarsys 1.0.3 (2019-10-03)
 --------------------------------------------------------------------------------
 
