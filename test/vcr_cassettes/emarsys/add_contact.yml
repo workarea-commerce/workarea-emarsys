@@ -2,24 +2,22 @@
 http_interactions:
 - request:
     method: put
-    uri: https://api-proxy.s.emarsys.com/api/v2/internal/215861890/contact/?create_if_not_exists=1
+    uri: https://api.emarsys.net/api/v2/contact/?create_if_not_exists=1
     body:
       encoding: UTF-8
-      string: '{"contacts":[{"3":"jyucis-emarsys@workarea.com"}]}'
+      string: '{"contacts":[{"3":"jyucis-emarsys-test@workarea.com"}]}'
     headers:
-      User-Agent:
-      - Faraday v0.15.4
       Content-Type:
       - application/json
-      X-Ems-Date:
-      - 20190313T181243Z
-      X-Ems-Auth:
-      - EMS-HMAC-SHA256 Credential=suite_workarea_v1/20190313/eu/suite/ems_request,
-        SignedHeaders=host;x-ems-date, Signature=a
+      Accept:
+      - application/json
+      X-Wsse:
+      - UsernameToken Username="un", PasswordDigest="PW",
+        Nonce="d36e316282959a9ed4c89851497a717f", Created="2020-01-15T16:41:44Z"
+      User-Agent:
+      - Faraday v0.15.4
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
   response:
     status:
       code: 200
@@ -30,38 +28,36 @@ http_interactions:
       Content-Length:
       - '74'
       Content-Type:
-      - application/json
+      - text/html; charset=utf-8
       Date:
-      - Wed, 13 Mar 2019 18:12:48 GMT
+      - Wed, 15 Jan 2020 16:41:44 GMT
       Pragma:
       - no-cache
       Server:
-      - openresty/1.11.2.1
+      - Apache
       Strict-Transport-Security:
-      - max-age=86400; includeSubDomains; preload
+      - max-age=15552000; includeSubDomains; preload
       Vary:
       - Accept-Encoding
       Via:
       - kong/0.14.1
       X-Emarsys-Request-Id:
-      - 5fa693f7-8fe3-4b50-a766-7488acf6c08d#17813
-      X-Fe:
-      - suitesapipxy01.emarsys.at
+      - 337be0c0-317b-4e6a-a934-0593170e4d31#1295874
       X-Kong-Proxy-Latency:
-      - '18'
+      - '2'
       X-Kong-Upstream-Latency:
-      - '737'
+      - '110'
       X-Ratelimit-Limit:
-      - '200'
+      - '1000'
       X-Ratelimit-Remaining:
-      - '199'
+      - '999'
       X-Ratelimit-Reset:
-      - '1552500780'
+      - '1579106564'
       X-Suite-Response-Time:
-      - '697'
+      - '69'
     body:
       encoding: ASCII-8BIT
-      string: '{"replyCode":0,"replyText":"OK","data":{"ids":[500767919]}}'
+      string: '{"replyCode":0,"replyText":"OK","data":{"ids":[106504559]}}'
     http_version:
-  recorded_at: Wed, 13 Mar 2019 18:12:48 GMT
+  recorded_at: Wed, 15 Jan 2020 16:41:44 GMT
 recorded_with: VCR 2.9.3

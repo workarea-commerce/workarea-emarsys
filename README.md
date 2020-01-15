@@ -35,17 +35,17 @@ Configuration
 --------------------------------------------------------------------------------
 The following fields can be edited via the admin site settings:
 
-1. **Production:** A toggle switch to set the integration into production mode, defaults to false.
-2. **Customer ID:** The customer ID of account. Ask your Emarsys account manager for this value.
-3. **Merchant ID:** The merchant ID of the Emarsys account. This value is required for the Web Extend Analytics Integration
+1. **Production:** A toggle switch to set the integration into production mode, defaults to true.
+2. **Merchant ID:** The merchant ID of the Emarsys account. This value is required for the Web Extend Analytics Integration
 
 
-The contact and sales data APIs require different access keys that require storage in the secrets file.
+The contact and sales data APIs require different access keys that require storage in the secrets file. You can generate a user for the contact API in the Emarsys admin.
 
 Add the following to your secrets:
 
     emarsys:
-      secret_key: YOUR_SECRET_KEY_HERE
+      user_name: YOUR_API_USER_NAME_HERE
+      secret_key: YOUR_API_SECRET_KEY_HERE
     emarsys_sales:
       api_token: YOUR_TOKEN_HERE
 

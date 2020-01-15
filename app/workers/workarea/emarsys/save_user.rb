@@ -10,14 +10,11 @@ module Workarea
       )
 
       def perform(id)
-        return unless Emarsys.customer_id.present?
-
         user = Workarea::User.find(id)
 
         attrs = Emarsys::Contact.new(user, { address: address(user), contact_from: 'user' }).to_h
 
         response = gateway.create_contact(attrs)
-
         user.set(emarsys_exported_at: Time.current)
         external_id = response.body["data"]["id"] || response.body["data"]["ids"].first
         user.set(emarsys_external_id: external_id)

@@ -1,33 +1,26 @@
 module Workarea
   module Emarsys
     class Gateway
-      attr_reader :secret_key, :customer_id, :options
+      attr_reader :secret_key, :user_name, :options
 
-      def initialize(secret_key, customer_id, options = {})
+      def initialize(secret_key, user_name, options = {})
         @secret_key = secret_key
-        @customer_id = customer_id
+        @user_name = user_name
         @options = options
       end
 
       def create_contact(attrs)
-        base_uri = "/api/v2/internal/#{customer_id}/contact/"
+        base_uri = "/api/v2/contact/"
         params = { create_if_not_exists: 1 }
         query_values = "?" + params.to_query
 
         path = base_uri + query_values
 
-        request_data = sign_request('put', path, attrs.to_json)
-
         response = connection.put do |req|
           req.url path
           req.params = params
           req.body = attrs.to_json
-
-          request_data[:headers].each do |k, v|
-            req.headers[k] = v
-          end
         end
-
         Response.new(response)
       end
 
@@ -39,36 +32,28 @@ module Workarea
             open_timeout: Workarea::Emarsys.config.open_timeout
           }
 
-          Faraday.new(url: rest_endpoint, request: request_timeouts)
-        end
-
-        def sign_request(method, path, body = nil)
-          escher = Escher::Auth.new('eu/suite/ems_request', escher_options)
-
-          request_data = {
-            method: method.upcase,
-            uri: path,
-            body: body,
-            headers: [['Content-Type', 'application/json'], ['host', host]]
+          headers = {
+            "Content-Type" => "application/json",
+            "Accept"       => "application/json",
+            "X-WSSE" => auth_header
           }
 
-          escher.sign!(request_data, { api_key_id: escher_key, api_secret: secret_key })
-
-          request_data
+          Faraday.new(url: rest_endpoint, request: request_timeouts, headers: headers)
         end
 
-        def escher_options
-          {
-            algo_prefix: 'EMS',
-            vendor_key: 'EMS',
-            auth_header_name: 'X-Ems-Auth',
-            date_header_name: 'X-Ems-Date',
-            current_time: Time.current
-          }
-        end
+        def auth_header
+          nonce = SecureRandom.base64(32).first(32)
+          timestamp = Time.now.utc.iso8601
 
-        def escher_key
-          Workarea.config.emarsys.escher_key
+          password_digest = Base64.encode64(Digest::SHA1.new.hexdigest(nonce + timestamp + secret_key)).strip
+
+          header = 'UsernameToken ' +
+            "Username=\"#{user_name}\", " +
+            "PasswordDigest=\"#{password_digest}\", " +
+            "Nonce=\"#{nonce}\", " +
+            "Created=\"#{timestamp}\""
+
+          header
         end
 
         def rest_endpoint
@@ -83,12 +68,8 @@ module Workarea
           end
         end
 
-        def uri_base
-          "/api/v2/internal/#{customer_id}/"
-        end
-
          def test?
-          (options.has_key?(:test) ? options[:test] : true)
+          (options.has_key?(:test) ? options[:test] : false)
         end
     end
   end
