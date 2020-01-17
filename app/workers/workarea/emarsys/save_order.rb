@@ -10,8 +10,6 @@ module Workarea
       )
 
       def perform(id)
-        return unless Emarsys.customer_id.present?
-
         order = Workarea::Order.find(id)
         address = Workarea::Payment.find(order.id).address
 

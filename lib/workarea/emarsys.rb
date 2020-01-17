@@ -1,12 +1,10 @@
 require 'workarea'
 require 'workarea/storefront'
 require 'workarea/admin'
-require 'workarea/google_product_feed'
 
 require 'workarea/emarsys/engine'
 require 'workarea/emarsys/version'
-
-require 'escher'
+require 'workarea/google_product_feed'
 
 module Workarea
   module Emarsys
@@ -22,16 +20,16 @@ module Workarea
       credentials[:secret_key]
     end
 
-    def self.api_token
-      sales_data_credentials[:api_token]
-    end
-
-    def self.customer_id
-      Workarea.config.customer_id
+    def self.user_name
+      credentials[:user_name]
     end
 
     def self.merchant_id
       Workarea.config.merchant_id
+    end
+
+    def self.api_token
+      sales_data_credentials[:api_token]
     end
 
     def self.config
@@ -44,7 +42,7 @@ module Workarea
     # @return [Emarsys::Gateway]
     def self.gateway
       if credentials.present?
-        Emarsys::Gateway.new(secret_key, Emarsys.customer_id, { test: !Workarea.config.emarsys_production_api })
+        Emarsys::Gateway.new(secret_key, user_name, { test: !Workarea.config.emarsys_production_api })
       else
         Emarsys::BogusGateway.new
       end

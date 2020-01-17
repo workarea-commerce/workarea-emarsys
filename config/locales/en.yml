@@ -13,7 +13,6 @@ en:
           title: Emarsys Configuration
           button: Save Emarsys Configuration
           production: Use Production API?
-          customer_id: Customer ID
           merchant_id: Merchant ID
           api_key: API Key
           sales_api_key: Sales Data API Key
@@ -22,7 +21,6 @@ en:
           help:
             api_key: API Key for customer synchronization. Can be found in the Emarsys adminstration system.
             sales_api_key: API Key for order file synchronization. Can be found in the Emarsys adminstration system.
-            production: Use the Live/Production API endpoints. Turn this on when ready to go live with your integration.
-            customer_id: Emarsys customer ID. Required for using API endpoints. Contact your Emarays Support team to get this value.
+            production: Use the Live/Production API endpoints.
             merchant_id: Emarsys merchant ID. This value is required for the Web Extend data integration.
 

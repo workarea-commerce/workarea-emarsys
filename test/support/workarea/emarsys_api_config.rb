@@ -8,7 +8,8 @@ module Workarea
 
     def set_key
       Rails.application.secrets.emarsys = {
-        secret_key: "a"
+        secret_key: "a",
+        user_name: "b"
       }
     end
 
