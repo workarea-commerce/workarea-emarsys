@@ -1,3 +1,15 @@
+Workarea Emarsys 2.0.0 (2020-01-21)
+--------------------------------------------------------------------------------
+
+*   Update Emarsys to use public API's
+
+    Commit removes escher request signing and uses the public APIs. Sets
+    the gateway to production by default because sandboxes are only issues by special
+    request.
+    Jeff Yucis
+
+
+
 Workarea Emarsys 1.1.0 (2019-11-26)
 --------------------------------------------------------------------------------
 
