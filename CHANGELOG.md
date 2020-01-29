@@ -1,3 +1,23 @@
+Workarea Emarsys 2.0.1 (2020-01-29)
+--------------------------------------------------------------------------------
+
+*   Bump version for release
+
+    Ben Crouse
+
+*   Fix Class Paths
+
+    Some paths in `app/` did not match their constant names, resulting in
+    issues when trying to decorate these classes. Move the offending files
+    to their correct location so as to enable decorating them.
+
+    Fixes #10
+
+    EMARSYS-3
+    Tom Scott
+
+
+
 Workarea Emarsys 2.0.0 (2020-01-21)
 --------------------------------------------------------------------------------
 
